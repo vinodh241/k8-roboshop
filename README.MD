@@ -10,3 +10,9 @@
 
 1. create a namespace 
 2. 
+
+# mongodb:
+==========
+* create a deployment instead of pod 
+* it will communicate other microservices so creating service and cluster IP 
+
