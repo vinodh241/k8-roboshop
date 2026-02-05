@@ -1,0 +1,71 @@
+# configMap for setup env 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    component: catalogue
+    project: roboshop
+    tier: app
+data:
+  MONGO: "true"
+  MONGO_URL: "mongodb://mongodb:27017/catalogue"
+
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: roboshop
+  # deployment labels 
+  labels:
+    component: catalogue
+    project: roboshop
+    tier: app
+
+spec: 
+  replicas: 1 
+  # these are the labels replica set use to create pod replicas, this should match pod lables
+  selector:
+    matchLabels:
+      component: catalogue
+      project: roboshop
+      tier: app
+  # this is pod definition
+  template:
+    metadata:
+      labels:
+        component: catalogue
+        project: roboshop
+        tier: app
+    spec:
+      containers:
+      - name: catalogue
+        image: vinod9072/catalogue:v1 
+        envFrom:
+        - configMapRef:
+          name: catalogue
+---
+# service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue
+  namespace: roboshop 
+  labels:
+    component: catalogue
+    project: roboshop
+    tier: app
+spec:
+  selector:
+    component: catalogue
+    project: roboshop
+    tier: app
+  ports:
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
+
