@@ -55,7 +55,7 @@ terms:
 # How to create a cluster :
 -----------------------------
 
-eksctl create cluster --config-file=eks.yaml 
+*  eksctl create cluster --config-file=eks.yaml 
 
 * kubectl get nodes -- shows the worker nodes
 * everything is called resources in kubernetes 
