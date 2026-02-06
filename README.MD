@@ -36,7 +36,7 @@ it will give a UI
 
 shift + ;  press 
 
-* then see the options need to enter below commands everytime 
+* then see the options need to enter below commands everytime  manually 
 
 
 ===
@@ -48,9 +48,8 @@ OR
 * alias ka="kubectl apply -f <manifest.yaml>"
 * alias ks="kubectl get services"
 * alias kp="kubectl get pods"
+* alias kd="kubectl delete -f <manifest.yaml>"
 
 if you set alias no need to enter full command everytime just enter ka or kp as per above 
-
-
 
 ================================================================================
