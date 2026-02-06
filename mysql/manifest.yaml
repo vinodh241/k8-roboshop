@@ -40,7 +40,10 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: vinod9072/mysql:v1 
+        image: vinod9072/mysql:v1
+        envFrom:
+        - secretRef:
+            name: mysql
 ---
 # service
 
