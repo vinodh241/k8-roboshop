@@ -1,5 +1,4 @@
 # configMap for setup env 
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -15,8 +14,8 @@ data:
   USER_HOST: "user"
   USER_PORT: "8080"
   AMQP_HOST: "rabbitmq"
----
 
+---
 apiVersion: v1
 kind: Secret
 metadata:
@@ -66,7 +65,7 @@ spec:
         - configMapRef:
             name: payment
         - secretRef:
-          - name: payment
+            name: payment
 ---
 # service
 
