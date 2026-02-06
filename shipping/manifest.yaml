@@ -1,0 +1,71 @@
+# configMap for setup env 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    component: shipping
+    project: roboshop
+    tier: app
+data:
+  CART_ENDPOINT: "cart:8080"
+  DB_HOST: "mysql"
+
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: roboshop
+  # deployment labels 
+  labels:
+    component: shipping
+    project: roboshop
+    tier: app
+
+spec: 
+  replicas: 1 
+  # these are the labels replica set use to create pod replicas, this should match pod lables
+  selector:
+    matchLabels:
+      component: shipping
+      project: roboshop
+      tier: app
+  # this is pod definition
+  template:
+    metadata:
+      labels:
+        component: shipping
+        project: roboshop
+        tier: app
+    spec:
+      containers:
+      - name: shipping
+        image: vinod9072/shipping:v1 
+        envFrom:
+        - configMapRef:
+            name: shipping
+---
+# service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+  namespace: roboshop 
+  labels:
+    component: shipping
+    project: roboshop
+    tier: app
+spec:
+  selector:
+    component: shipping
+    project: roboshop
+    tier: app
+  ports:
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
+
