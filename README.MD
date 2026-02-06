@@ -53,3 +53,5 @@ OR
 if you set alias no need to enter full command everytime just enter ka or kp as per above 
 
 ================================================================================
+# redis:
+=========
