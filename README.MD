@@ -23,8 +23,11 @@
 -------------------------
 * to activate the custom namespaces instead of default one 
 
-kubens
-https://github.com/ahmetb/kubectx
+
+# kubens
+=======: To install kubens 
+
+https://github.com/ahmetb/kubectx 
 
 git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
