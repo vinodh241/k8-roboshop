@@ -8,8 +8,8 @@
 # K8's:
 =======
 
-1. create a namespace 
-2. 
+1. create cluster
+2. create a namespace 
 
 # mongodb:
 ==========
