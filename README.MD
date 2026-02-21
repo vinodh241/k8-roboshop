@@ -39,7 +39,7 @@ k9s: *
 
 curl -sS https://webinstall.dev/k9s | bash
 
-* take duplicate session and type k9s 
+* take duplicate session and type     "   k9s  " 
 it will give a UI 
 
 shift + ;  press 
